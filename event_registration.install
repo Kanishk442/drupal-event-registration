@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function event_registration_schema() {
+  $schema = [];
+
+  $schema['event_registration_event_config'] = [
+    'description' => 'Stores event configuration.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'event_name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'category' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ],
+      'event_date' => [
+        'type' => 'date',
+        'not null' => TRUE,
+      ],
+      'registration_start' => [
+        'type' => 'datetime',
+        'not null' => TRUE,
+      ],
+      'registration_end' => [
+        'type' => 'datetime',
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function event_registration_install() {
+  $schema = \Drupal::database()->schema();
+
+  if (!$schema->tableExists('event_registration_event_config')) {
+    $schema->createTable(
+      'event_registration_event_config',
+      event_registration_schema()['event_registration_event_config']
+    );
+  }
+}

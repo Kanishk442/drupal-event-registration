@@ -1,0 +1,7 @@
+name: 'Event Registration'
+type: module
+description: 'Allows users to register for events via a custom form'
+package: 'Custom'
+core_version_requirement: ^10
+dependencies:
+  - drupal:datetime

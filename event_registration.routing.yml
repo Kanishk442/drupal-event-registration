@@ -1,0 +1,85 @@
+event_registration.form:
+  path: '/event/register'
+  defaults:
+    _title: 'Event Registration'
+    _form: '\Drupal\event_registration\Form\EventRegistrationForm'
+  requirements:
+    _permission: 'access event registration form'
+
+event_registration.admin_config:
+  path: '/admin/config/event-registration/settings'
+  defaults:
+    _form: '\Drupal\event_registration\Form\AdminConfigForm'
+    _title: 'Event Registration Settings'
+  requirements:
+    _permission: 'administer event registration'
+
+event_registration.event_config:
+  path: '/admin/config/event-registration/event'
+  defaults:
+    _form: '\Drupal\event_registration\Form\EventConfigForm'
+    _title: 'Configure Event'
+  requirements:
+    _permission: 'administer event registration'
+
+event_registration.admin_list:
+  path: '/admin/content/event-registrations'
+  defaults:
+    _controller: '\Drupal\event_registration\Controller\AdminController::listRegistrations'
+    _title: 'Event Registrations'
+  requirements:
+    _permission: 'administer event registration'
+
+event_registration.ajax_events:
+  path: '/event-registration/ajax/events/{category}/{date}'
+  defaults:
+    _controller: '\Drupal\event_registration\Controller\EventRegistrationController::getEvents'
+    _title: 'Get Events'
+  requirements:
+    _permission: 'access event registration form'
+  options:
+    parameters:
+      category:
+        type: string
+      date:
+        type: string
+
+event_registration.ajax_dates:
+  path: '/event-registration/ajax/dates/{category}'
+  defaults:
+    _controller: '\Drupal\event_registration\Controller\EventRegistrationController::getDates'
+    _title: 'Get Dates'
+  requirements:
+    _permission: 'access event registration form'
+  options:
+    parameters:
+      category:
+        type: string
+
+event_registration.admin_ajax:
+  path: '/admin/event-registration/ajax/{date}/{event_name}'
+  defaults:
+    _controller: '\Drupal\event_registration\Controller\AdminController::getRegistrations'
+    _title: 'Get Registrations'
+  requirements:
+    _permission: 'administer event registration'
+  options:
+    parameters:
+      date:
+        type: string
+      event_name:
+        type: string
+
+event_registration.export_csv:
+  path: '/admin/event-registration/export/{date}/{event_name}'
+  defaults:
+    _controller: '\Drupal\event_registration\Controller\AdminController::exportCsv'
+    _title: 'Export CSV'
+  requirements:
+    _permission: 'administer event registration'
+  options:
+    parameters:
+      date:
+        type: string
+      event_name:
+        type: string

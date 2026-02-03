@@ -1,0 +1,6 @@
+administer event registration:
+  title: 'Administer Event Registration'
+  description: 'Access to administer event registration settings and view registrations'
+access event registration form:
+  title: 'Access Event Registration Form'
+  description: 'Access to the event registration form'

@@ -1,0 +1,15 @@
+registration:
+  version: 1.x
+  js:
+    js/event-registration.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+admin:
+  version: 1.x
+  js:
+    js/admin-filter.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax

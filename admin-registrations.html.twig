@@ -1,0 +1,9 @@
+<h2>Event Registration Confirmation</h2>
+<p>Dear {{ user_name }},</p>
+<p>Thank you for registering for our event. Here are your registration details:</p>
+<ul>
+  <li><strong>Event Name:</strong> {{ event_name }}</li>
+  <li><strong>Event Date:</strong> {{ event_date|date('F j, Y') }}</li>
+  <li><strong>Category:</strong> {{ category }}</li>
+</ul>
+<p>We look forward to seeing you at the event!</p>

@@ -1,0 +1,8 @@
+services:
+  event_registration.email_service:
+    class: Drupal\event_registration\Service\EmailService
+    arguments: ['@plugin.manager.mail', '@config.factory', '@language_manager']
+  
+  event_registration.csv_service:
+    class: Drupal\event_registration\Service\CsvExportService
+    arguments: ['@database']
